@@ -3,7 +3,7 @@ package prueba;
 import java.io.*;
 import java.net.*;
 
-public class GreetClient {
+public class EchoClient {
 	private Socket clientSocket;
     private PrintWriter out;
     private BufferedReader in;
@@ -41,13 +41,16 @@ public class GreetClient {
 		}
     }
     
-    
-    
-    
+
     public static void main(String[] args) {
-    	GreetClient client = new GreetClient();
-        client.startConnection("127.0.0.1", 6670);
+    	EchoClient client = new EchoClient();
+        client.startConnection("127.0.0.1", 5555);
         String response = client.sendMessage("hola servidor");
         System.out.println("Servidor respuesta: " + response);
+        
+        EchoClient client2 = new EchoClient();
+        client.startConnection("127.0.0.1", 5555);
+        String response2 = client2.sendMessage("hola otra vez");
+        System.out.println("Servidor respuesta: " + response2);
     }
 }
